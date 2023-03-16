@@ -296,6 +296,28 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+                            <div class="row mb0">
+                                <div class="col s12">
+                                    <div class="cs-file">
+                                        <ul>
+                                            <li>
+                                                <div class="cs-file file-up">
+                                                    <label>
+                                                        <input type="file" (change)="onUploadCheque($event)" style="display:none;" accept=".png, .jpg, .jpeg, .pdf"  />
+                                            <img  [src]="docIdchq ? uploadUrl+karigarform.cheque_image : karigarform.cheque_image" alt="" id="img" *ngIf="karigarform.cheque_image != null">
+                                                        <i class="material-icons add-file-icon" >add</i>
+                                                    </label>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
                             
                         </div>
                     </div>

@@ -205,6 +205,13 @@
                                 <h2>BANK DETAIL</h2>
                             </div>
                             <div class="detail-info pl0 pr0">
+
+                                <div class="img-box">
+                                    <img src="{{uploadUrl + getData.cheque_image ? uploadUrl + getData.cheque_image : 'assets/default-image.png'}}"
+                                        (click)="getData.cheque_image!='' && openDialog(getData.id,'test8')">
+                                </div>
+
+
                                 <div class="basic-details">
                                     <div class="profile-info">
                                         <ul>

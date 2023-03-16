@@ -12,6 +12,7 @@ import {MatPaginator, MatTableDataSource, MatDialog, MatDatepicker} from '@angul
 })
 export class KarigarAddComponent implements OnInit {
     docId:any;
+    docIdchq:any;
     loading_list = false;
     karigarform: any = {};
     savingData = false;
@@ -31,6 +32,7 @@ export class KarigarAddComponent implements OnInit {
         this.route.params.subscribe(params => {
             this.karigar_id = params['karigar_id'];
             this.docId = params['karigar_id'];
+            this.docIdchq = params['karigar_id'];
             
             if (this.karigar_id)
             {
@@ -206,4 +208,24 @@ export class KarigarAddComponent implements OnInit {
     {
         this.karigarform.dis_mobile = this.dr_list.filter( x => x.id === this.karigarform.dis_id )[0].phone;
     }
+
+
+
+
+
+    onUploadCheque(evt: any) {
+        const file = evt.target.files[0];
+        console.log(file);
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = this.handleReaderLoaded3.bind(this);
+            reader.readAsBinaryString(file);
+            this.docIdchq = '';
+        }
+    }
+    handleReaderLoaded3(e) {
+        this.karigarform.cheque_image = 'data:image/png;base64,' + btoa(e.target.result) ;
+    }
+
+
 }

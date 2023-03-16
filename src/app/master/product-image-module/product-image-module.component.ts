@@ -57,6 +57,15 @@ export class ProductImageModuleComponent implements OnInit {
         {
             this.getKarigarDocument();
         }
+
+
+
+        if( this.part_data.mode == 'test8' )
+        {
+            this.getKarigarDocument();
+        }
+
+
         if( this.part_data.mode == 'test9' )
         {
             this.getKarigarDocument();

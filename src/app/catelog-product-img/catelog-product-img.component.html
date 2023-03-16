@@ -45,7 +45,9 @@
                     <div class="image-section1">
                         <img src="{{uploadurl+val.image}}" (click)="openDialog( val.image,'test1')">
                     </div>
-                    <!-- <div class="pdf-content">{{val.pdf_name  | titlecase}}</div> -->
+                    <div class="pdf-content">
+                        {{val.desc  | titlecase}}
+                    </div>
                     <div class="hvr-edit">
                         <a class="delete-icn"><i class="material-icons" (click)="deleteProduct(val.id)">delete_sweep</i></a>
                     </div>
@@ -160,6 +162,17 @@
             <div class="add-image">
                 <div class="sco-12">
                     <div class="scrol-13">
+
+
+                        <div class="option-field">
+                            <div class="control-field">
+                                <mat-form-field class="cs-input">
+                                    <input matInput placeholder="Description" name="desc"
+                                        [(ngModel)]="productForm.desc" #desc="ngModel" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
                         <!-- <div class="option-field">
                             <div class="control-field">
                                 <mat-form-field class="cs-input">

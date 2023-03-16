@@ -106,6 +106,17 @@
 
 
 
+        
+        <div class="gift-box product-img " *ngIf=" part_data.mode == 'test8'">  
+            <div class="form-area dwn_rl">
+                <img [src]="uploadUrl+documentImage.cheque_image">
+                <a href="{{uploadUrl+documentImage.cheque_image}}" download target="_blank" ><i class="material-icons ico_dwn">get_app</i></a>
+            </div>
+            <button mat-button [mat-dialog-close]="false" ><i class="material-icons ">clear</i></button>
+        </div>
+
+
+
         <div class="product-img " *ngIf=" part_data.mode == 'test9'">  
             <div class="btn-group">
                 <button mat-icon-button [mat-dialog-close]="false" >
