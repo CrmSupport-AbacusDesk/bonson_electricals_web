@@ -88,6 +88,16 @@
   </div>
 </form>
 
+
+<div>
+  <ngx-qrcode 
+  [elementType]="elementType" 
+  [value]="value"
+  cssClass="aclass"
+  errorCorrectionLevel="L">
+</ngx-qrcode>
+</div>
+
 <div class="css-table">
   <div class="sticky-header">
     <div class="header">
@@ -151,6 +161,12 @@
             <td>{{val.remarks}}</td>
             <td class="w100">
               <div class="cs-action">
+
+                <!-- click="getPrintCoupon('')" -->
+                <a class="ac-green"  matTooltip="Print" routerLink="/add-coupon-detail/{{val.id}}"   routerLinkActive="active"
+                ><i class="material-icons">print</i></a>
+
+
                 <a class="ac-green" matTooltip="Excel Download" matTooltipPosition="below" 
                 (click)="val.coupon_type == 'Scanning Coupon' ? scanCoupon(val.id) : companyCoupon(val.id);"><i class="material-icons">cloud_download</i></a>
                 <a class="ac-red" matTooltip="Delete" matTooltipPosition="below" 

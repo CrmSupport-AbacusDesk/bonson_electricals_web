@@ -2966,10 +2966,11 @@ header
                 background: #ff081a;
                 padding: 10px;
                 margin: 5px 0px;
+                padding-top: 17px;
 
                 img
                 {
-                    height: 35px;
+                    height: 60px;
                     transition: 0.5s;
                     object-fit: contain;
                 }
@@ -8576,4 +8577,9 @@ h2.hed_mr {
 }
 .gft_img {
     height: 100%;
+}
+
+
+.prnt_prt {
+    height: 200px !important;
 }

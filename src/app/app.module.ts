@@ -85,6 +85,9 @@ import { SiteGalleryComponent } from './site-gallery/site-gallery.component';
 import { FurnitureIdeaComponent } from './furniture-idea/furniture-idea.component';
 import { FurnitureSubIdeaComponent } from './furniture-sub-idea/furniture-sub-idea.component';
 
+
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 import { FaqQuestionnaireComponent } from './faq-questionnaire/faq-questionnaire.component';
 import { ManualAssignModelComponent } from './coupon-codes/manual-assign-model/manual-assign-model.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
@@ -107,11 +110,13 @@ import { AssignRelatedProductsComponent } from './master/assign-related-products
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {AddgiftComponent} from '../app/addgift/addgift.component';
 import {GiftsComponent} from '../app/gifts/gifts.component';
+
 import { AddCouponCodesComponent } from './coupon-codes/add-coupon-codes/add-coupon-codes.component';
 import { MasterTabComponent } from './master/master-tab/master-tab.component';
 import { SubcategoryListComponent } from './master/subcategory-list/subcategory-list.component';
 import { CatelogProductImgComponent } from './catelog-product-img/catelog-product-img.component';
 import { AssignCouponCodeComponent } from './assign-coupon-code/assign-coupon-code.component';
+import { AddCouponDetailComponent } from './add-coupon-detail/add-coupon-detail.component';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FusionTheme);
 
@@ -171,6 +176,14 @@ const routes: Routes = [
   {path: 'coupon-code-master', component:CouponCodeMasterComponent , canActivate: [AuthGuard]},
   {path: 'digitallist', component:DigitallistComponent , canActivate: [AuthGuard]},
   {path: 'add-coupon', component:AddCouponCodesComponent , canActivate: [AuthGuard] },
+
+  {path: 'add-coupon-detail', component:AddCouponDetailComponent , canActivate: [AuthGuard] },
+  {path: 'add-coupon-detail/:couponid', component:AddCouponDetailComponent , canActivate: [AuthGuard] },
+
+
+
+
+
   {path: 'assign-coupon-code', component:AssignCouponCodeComponent , canActivate: [AuthGuard] },
 
   { path: '**', redirectTo: ''},
@@ -268,7 +281,11 @@ const routes: Routes = [
     UploaddigitalcatComponent,
     SubcategoryListComponent,
     CatelogProductImgComponent,
-    AssignCouponCodeComponent
+    AssignCouponCodeComponent,
+    AddCouponDetailComponent,
+
+
+
   ],
   imports: [
     HttpClientModule,
@@ -292,12 +309,17 @@ const routes: Routes = [
     MatExpansionModule,
     FilterPipeModule,
     NgxMatSelectSearchModule,
+    NgxQRCodeModule
+  
+  
 
   ],
   providers: [
     AuthGuard,
     AuthGuardLog,
     DatabaseService
+  
+    
   ],
   
   entryComponents: [
@@ -329,7 +351,11 @@ const routes: Routes = [
     SendmessageComponent,
     BonusPointModelComponent,
     SendNotificationComponent,
-    AssignRelatedProductsComponent
+    AssignRelatedProductsComponent,
+    AddCouponDetailComponent
+
+
+  
   ],
   
   exports: [

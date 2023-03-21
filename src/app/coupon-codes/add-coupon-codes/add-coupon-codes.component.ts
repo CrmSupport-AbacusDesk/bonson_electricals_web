@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDatepicker, MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { AddCouponDetailComponent } from 'src/app/add-coupon-detail/add-coupon-detail.component';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { MastetDateFilterModelComponent } from 'src/app/mastet-date-filter-model/mastet-date-filter-model.component';
 import { DatabaseService } from 'src/app/_services/DatabaseService';
@@ -16,15 +18,20 @@ export class AddCouponCodesComponent implements OnInit {
   filter:any = {};
   date1;
   product_code:any =[];
-  ngSwitchCase: any
+  ngSwitchCase: any;
+  value = 'Techiediaries';
+  // print_coupon: any = {};
 
-  constructor(public db: DatabaseService,  public dialog: DialogComponent, public alrt: MatDialog) { 
+  couponid: any = {};
+
+  constructor(public db: DatabaseService,  public dialog: DialogComponent, public alrt: MatDialog,public router:Router) { 
     
   }
 
   ngOnInit() {
     this.getProduct('');
     this.getAvailableCoupanList('');
+    // this.getPrintCoupon('');
   }
 
   getProduct(e){
@@ -40,11 +47,23 @@ export class AddCouponCodesComponent implements OnInit {
      this.filter.date = this.filter.date  ? this.db.pickerFormat(this.filter.date) : '';
     console.log("coupon list is come");
     this.db.post_rqst({'filter': this.filter},'app_master/coupon_history').subscribe(r=>{
-      // console.log(r);
+      console.log(r);
       this.available_coupon=r['coupon'];
       console.log(this.available_coupon);
+      console.log(['coupon.id']);
+
+
+    
+    
+      
+  
+      
     })
   }
+
+
+
+
 
   numeric_Number(event: any) {
     const pattern = /[0-9\+\-\ ]/;
@@ -77,7 +96,13 @@ saveCouponfrom(form: any) {
           this.savingData = false;
           this.loading_list = false;
           this.getAvailableCoupanList('');
-          // this.router.navigate(['/coupon-code-list']);
+          // this.getPrintCoupon(d['id']);
+          this.couponid = d.id;   
+          console.log(this.couponid);
+          
+      
+          this.router.navigate(['add-coupon-detail/' + this.couponid]);
+          return;
         });
     }
     else {
@@ -85,6 +110,7 @@ saveCouponfrom(form: any) {
     }
 
   }
+ 
 
   openDatePicker(picker : MatDatepicker<Date>)
   {
@@ -154,4 +180,28 @@ deleteCoupon(id) {
     // }
     this.saveCouponfrom(form);
   }
+
+
+
+
+
+
+
+
+ 
+//   openDialogPrint(id ) {
+//     const dialogRef = this.alrt.open(AddCouponDetailComponent,{
+//         data: {
+//             'id' : id,
+          
+//         }
+//     });
+//     dialogRef.afterClosed().subscribe(result => {
+//         console.log(`Dialog result: ${result}`);
+//     });
+// }
+
+
+
+
 }
