@@ -78,7 +78,7 @@
           <div class="row mb0">
             <div class="col s12">
               <div class="save" >
-                <button mat-button>Generate</button>
+                <button mat-button [disabled]="savingData">Generate</button>
               </div>
             </div>
           </div>
@@ -89,14 +89,14 @@
 </form>
 
 
-<div>
+<!-- <div>
   <ngx-qrcode 
   [elementType]="elementType" 
   [value]="value"
   cssClass="aclass"
   errorCorrectionLevel="L">
 </ngx-qrcode>
-</div>
+</div> -->
 
 <div class="css-table">
   <div class="sticky-header">
