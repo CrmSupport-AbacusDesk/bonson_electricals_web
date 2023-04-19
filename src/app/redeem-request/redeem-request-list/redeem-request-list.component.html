@@ -84,6 +84,8 @@
                             <!-- <th class="w130">Gift</th>
                             <th>Offer-valid Upto</th>
                             <th class="w85">Request Type</th> -->
+                            <th class="w90">Redeem Type</th>
+                            
                             <th class="w85">Redeem Status</th>
                             <th class="w120">Gift Status</th>
                             <th class="w100">Bank Name</th>
@@ -151,6 +153,20 @@
                                                 <mat-option value="Pending">Pending</mat-option>
                                                 <mat-option value="Reject">Reject</mat-option>
                                                 <mat-option value="Suspect">Suspect</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </th>
+                            <th class="w90">
+                                <div class="form-area">
+                                    <div class="slect mr0">
+                                        <mat-form-field>
+                                            <mat-label>All</mat-label>
+                                            <mat-select  [(ngModel)]="filter.redeem_type" name="redeem_type" #redeem_type="ngModel" (selectionChange)="getReedamList('')">
+                                                <mat-option value="">All</mat-option>
+                                                <mat-option value="Gift">Gift</mat-option>
+                                                <mat-option value="Cash">Cash</mat-option>
                                             </mat-select>
                                         </mat-form-field>
                                     </div>
@@ -307,6 +323,7 @@
                         <td class="w80">{{val.gift_points}}</td>
                         <td class="w100">{{val.mobile_no}}</td>
                         <td class="w100 bg-change {{val.karigar_status}}">{{val.karigar_status}}</td>
+                        <td class="w90 ">{{val.redeem_type | titlecase}}</td>
                         <!-- <td class="w130 ">{{val.sales_name}}</td> -->
                     <!-- <td class="w90 ">{{val.redeem_type | titlecase}}</td> -->
                         <!-- <td class="w130 ">{{val.gift_title}}</td>
@@ -315,7 +332,44 @@
 
                         <td class="w85  {{val.gift_status}}" >{{val.gift_status}}</td>
                         <td class="w120  {{val.receive_status}}">
+
+
+
+
+
+
                             <div class="center"  *ngIf="val.receive_status != 'Received' && val.gift_status == 'Approved'   ">
+                                <select class="{{val.receive_status}}"  [name]="'receive_status'+i" placeholder="Status" [(ngModel)]="val.receive_status" (change)="karigarsSatus(i, val.redeem_type) " >
+                                    <option  value="" [disabled]="val.receive_status == 'Transfer' || val.receive_status == 'Shipped' ">Under Process</option>
+                                    <option *ngIf="val.redeem_type == 'Cash'"  value="Transfer" class="Shipped">Transfer</option>
+                                    <option *ngIf="val.redeem_type == 'gift'" value="Shipped" class="Shipped">Shipped</option>
+                                    <option *ngIf="val.receive_status == 'Shipped' || val.receive_status == 'Transfer' " value="Received" class="Shipped">Received</option>
+
+    
+                                </select> 
+                            </div>
+                            <div  *ngIf="val.receive_status != 'Received' && val.gift_status == 'Pending'   ">
+                                <p class="center">---</p>
+                            </div>
+                            <ng-container *ngIf="val.receive_status == 'Received'  ">
+                                {{val.receive_status}}
+                            </ng-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            <!-- <div class="center"  *ngIf="val.receive_status != 'Received' && val.gift_status == 'Approved'   ">
                                 <select class="{{val.receive_status}}"  [name]="'receive_status'+i" placeholder="Status" [(ngModel)]="val.receive_status" (change)="karigarsSatus(i,val.redeem_type) " >
                                     <option  value="Under Process">Under Process</option>
                                     <option *ngIf="val.redeem_type == 'gift'" value="Shipped" class="Shipped">Shipped</option>
@@ -328,7 +382,7 @@
                             </div>
                             <ng-container *ngIf="val.receive_status == 'Received'  ">
                                 {{val.receive_status}}
-                            </ng-container>
+                            </ng-container> -->
                             
                         </td>
 

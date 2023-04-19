@@ -8583,3 +8583,21 @@ h2.hed_mr {
 .prnt_prt {
     height: 200px !important;
 }
+
+
+.mat-dialog-content {
+  
+    overflow: unset !important;
+   
+}
+.ico_dwn {
+    position: absolute;
+    right: 5px;
+    bottom: 12px;
+}
+
+.dwn_rl img {
+    width: 350px;
+    height: 300px !important;
+    object-fit: fill;
+}
