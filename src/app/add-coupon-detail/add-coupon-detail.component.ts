@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class AddCouponDetailComponent implements OnInit {
 
   value = 'Techiediaries';
-  print_coupon: any = {};
+  print_coupon: any = [];
   coupon_id: any;
   id: any;
 

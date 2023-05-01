@@ -169,8 +169,10 @@
 
                 <a class="ac-green" matTooltip="Excel Download" matTooltipPosition="below" 
                 (click)="val.coupon_type == 'Scanning Coupon' ? scanCoupon(val.id) : companyCoupon(val.id);"><i class="material-icons">cloud_download</i></a>
+
                 <a class="ac-red" matTooltip="Delete" matTooltipPosition="below" 
                 (click)="deleteCoupon(val.id)"><i class="material-icons">delete_sweep</i></a>
+                
               </div>
             </td>
           </tr>

@@ -59,6 +59,11 @@ export class KarigarAddComponent implements OnInit {
             this.loading_list = false;
             console.log(d);
             this.karigarform = d.karigar;
+
+            if(this.karigarform.dob == '0000-00-00'){
+                this.karigarform.dob = '';
+            }
+
             console.log( this.karigarform);
             this.getDistrictList(1);
             this.getCityList(1);

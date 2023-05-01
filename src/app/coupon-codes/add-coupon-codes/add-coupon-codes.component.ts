@@ -79,7 +79,7 @@ saveCouponfrom(form: any) {
     console.log("test");
     console.log('====================================');
 
-    if (this.coupon.total_coupon <= 25000) {
+    if (this.coupon.total_coupon <= 2500) {
       this.loading_list = true;
       this.savingData = true;
       this.coupon.created_by = this.db.datauser.id;
@@ -106,7 +106,7 @@ saveCouponfrom(form: any) {
         });
     }
     else {
-      this.dialog.error('Can not Generate more than 25,000 coupon codes at once!');
+      this.dialog.error('Can not Generate more than 25,00 coupon codes at once!');
     }
 
   }

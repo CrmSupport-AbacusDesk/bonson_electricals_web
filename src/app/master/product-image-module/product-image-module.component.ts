@@ -20,6 +20,8 @@ export class ProductImageModuleComponent implements OnInit {
     
     constructor(public db: DatabaseService, private route: ActivatedRoute,private router: Router,  public dialog: DialogComponent,@Inject(MAT_DIALOG_DATA) public lead_data: any, public dialogRef: MatDialogRef<ProductImageModuleComponent>)
     {
+
+        this.uploadUrl = this.db.uploadUrl;
         console.log(lead_data);
         
         this.part_data.id = lead_data.id; 
@@ -59,6 +61,10 @@ export class ProductImageModuleComponent implements OnInit {
         }
 
 
+        if( this.part_data.mode == 'test10' )
+        {
+            this.getKarigarDocument();
+        }
 
         if( this.part_data.mode == 'test8' )
         {
@@ -152,7 +158,7 @@ export class ProductImageModuleComponent implements OnInit {
             console.log( d );
             this.loading_list = false;
             this.karigarImage = d.karigarImage;
-            console.log(this.gift);
+            console.log(this.karigarImage);
         });
     }
     
